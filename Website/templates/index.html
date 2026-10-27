@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Global Fuel Analytics</title>
+  <meta name="description" content="Interactive Tableau dashboard and story exploring global fuel prices and taxation, 2020–2026.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+  <!-- Tableau Embedding API v3 -->
+  <script type="module" src="https://public.tableau.com/javascripts/api/tableau.embedding.3.latest.min.js"></script>
+</head>
+<body>
+
+  <!-- Floating left dock -->
+  <nav class="dock" aria-label="Section navigation">
+    <a href="#home" class="dock-btn active" data-target="home" aria-label="Home">
+      <span class="icon">🏠</span><span class="tip">Home</span>
+    </a>
+    <a href="#about" class="dock-btn" data-target="about" aria-label="About the Data">
+      <span class="icon">ℹ️</span><span class="tip">About the Data</span>
+    </a>
+    <a href="#dashboard" class="dock-btn" data-target="dashboard" aria-label="Data Insights Dashboard">
+      <span class="icon">📊</span><span class="tip">Data Insights Dashboard</span>
+    </a>
+    <a href="#story" class="dock-btn" data-target="story" aria-label="Global Fuel Prices Story">
+      <span class="icon">📖</span><span class="tip">Global Fuel Prices Story</span>
+    </a>
+  </nav>
+
+  <main>
+    <!-- Section 1: Hero -->
+    <section id="home" class="hero">
+      <div class="hero-inner">
+        <h1>Global Fuel Analytics</h1>
+        <a href="#dashboard" class="hero-sub">Exploring Market Data</a>
+        <div class="socials">
+          <a href="https://twitter.com" target="_blank" rel="noopener" aria-label="X / Twitter">
+            <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor"><path d="M18.244 2H21.5l-7.19 8.22L22.75 22h-6.62l-5.18-6.77L5 22H1.74l7.69-8.8L1.25 2h6.79l4.68 6.19L18.244 2zm-1.16 18h1.83L7.01 3.9H5.05L17.084 20z"/></svg>
+          </a>
+          <a href="https://facebook.com" target="_blank" rel="noopener" aria-label="Facebook">
+            <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor"><path d="M22 12a10 10 0 1 0-11.56 9.88v-6.99H7.9V12h2.54V9.8c0-2.5 1.49-3.89 3.78-3.89 1.09 0 2.24.2 2.24.2v2.46h-1.26c-1.24 0-1.63.77-1.63 1.56V12h2.78l-.44 2.89h-2.34v6.99A10 10 0 0 0 22 12z"/></svg>
+          </a>
+          <a href="https://linkedin.com" target="_blank" rel="noopener" aria-label="LinkedIn">
+            <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9.75h4v11.5H3V9.75zm6.5 0h3.83v1.57h.05c.53-1 1.84-2.07 3.79-2.07 4.05 0 4.8 2.67 4.8 6.13v5.87h-4v-5.2c0-1.24-.02-2.84-1.73-2.84-1.73 0-2 1.35-2 2.75v5.29h-4V9.75z"/></svg>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 2: About -->
+    <section id="about" class="section">
+      <div class="container">
+        <h2 class="section-title">About the Data</h2>
+        <p class="lead">This dataset encompasses global fuel prices and taxation trends spanning from 2020 to 2026, offering detailed insights into petrol, diesel, and LPG costs across different regions. It enables comparative evaluation of national fuel pricing policies and their correlation with tax structures worldwide.</p>
+
+        <div class="cards">
+          <article class="card">
+            <div class="card-icon">📊</div>
+            <h3>Key Insights</h3>
+            <p>Europe consistently demonstrates the highest average tax percentage (~34%) on fuels, significantly contributing to higher retail prices. Conversely, regions like the Middle East display the lowest taxation rates (~19%), subsidized heavily by local petroleum production.</p>
+          </article>
+          <article class="card">
+            <div class="card-icon">⛽</div>
+            <h3>Petrol vs. Diesel</h3>
+            <p>Historically, diesel prices remained marginally lower than petrol globally. However, the data highlights converging price points post-2022, primarily driven by surging commercial demand and varying environmental taxation protocols.</p>
+          </article>
+          <article class="card">
+            <div class="card-icon">🌐</div>
+            <h3>Comparison Analysis</h3>
+            <p>When comparing high-tax regions with minimal-tax nations, there is an inverse correlation between taxation levels and raw fuel price volatility. Advanced economies employ higher taxes as a buffer and a means of funding infrastructure, while producing nations maintain baseline costs.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 3: Dashboard -->
+    <section id="dashboard" class="section alt">
+      <div class="container wide">
+        <h2 class="section-title">Data Insights Dashboard</h2>
+        <p class="lead">Interactive dashboard visualizing Average Prices and Taxation Performance Indicators.</p>
+        <div class="viz-card">
+          <!-- ▼▼ DASHBOARD URL PLACEHOLDER: edit in app.py (DASHBOARD_URL) or replace src below ▼▼ -->
+          <tableau-viz
+            id="tableauDashboard"
+            src="{{ dashboard_url }}"
+            toolbar="hidden"
+            hide-tabs
+            device="desktop"
+            width="100%"
+            height="900"
+            style="display:block;width:100%;">
+          </tableau-viz>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 4: Story -->
+    <section id="story" class="section">
+      <div class="container wide">
+        <h2 class="section-title">Global Fuel Prices Story</h2>
+        <p class="lead">A step-by-step narrative exploring global trends.</p>
+        <div class="viz-card story-card">
+          <!-- ▼▼ STORY URL PLACEHOLDER: edit in app.py (STORY_URL) or replace src below ▼▼ -->
+          <tableau-viz
+            id="tableauStory"
+            src="{{ story_url }}"
+            toolbar="hidden"
+            device="desktop"
+            width="100%"
+            height="800"
+            style="display:block;width:100%;min-height:800px;">
+          </tableau-viz>
+        </div>
+      </div>
+    </section>
+
+    <footer class="footer">© 2026 Global Fuel Analytics · Data visualized with Tableau</footer>
+  </main>
+
+  <button id="toTop" class="to-top" aria-label="Scroll to top">↑</button>
+
+  <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>

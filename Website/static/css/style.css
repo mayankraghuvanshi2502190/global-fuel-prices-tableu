@@ -1,0 +1,240 @@
+:root {
+  --primary: #0d6efd;
+  --primary-dark: #0056b3;
+  --sky: #75C9F0;
+  --bg: #f8fafc;
+  --card: #ffffff;
+  --text: #1e293b;
+  --muted: #64748b;
+  --border: #e2e8f0;
+  --radius: 16px;
+  --shadow: 0 10px 30px rgba(15, 23, 42, 0.08);
+  --space: clamp(1rem, 3vw, 2rem);
+  --ease: 0.25s ease;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ---------- Floating dock ---------- */
+.dock {
+  position: fixed;
+  left: 18px;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 100;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 12px 8px;
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(8px);
+  border: 1px solid var(--border);
+  border-radius: 40px;
+  box-shadow: var(--shadow);
+}
+
+.dock-btn {
+  position: relative;
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  background: #eef4fb;
+  transition: transform var(--ease), background var(--ease), box-shadow var(--ease), filter var(--ease);
+}
+
+.dock-btn .icon { font-size: 1.3rem; line-height: 1; }
+
+.dock-btn:hover { transform: scale(1.12); background: #dbe9fb; }
+
+.dock-btn.active {
+  background: var(--primary-dark);
+  box-shadow: 0 6px 16px rgba(0, 86, 179, 0.4);
+}
+.dock-btn.active .icon { filter: brightness(0) invert(1); }
+
+.dock-btn .tip {
+  position: absolute;
+  left: 58px;
+  top: 50%;
+  transform: translateY(-50%) translateX(-6px);
+  background: var(--text);
+  color: #fff;
+  font-size: 0.8rem;
+  font-weight: 500;
+  white-space: nowrap;
+  padding: 6px 12px;
+  border-radius: 8px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity var(--ease), transform var(--ease);
+}
+.dock-btn:hover .tip,
+.dock-btn:focus-visible .tip { opacity: 1; transform: translateY(-50%) translateX(0); }
+
+/* ---------- Hero ---------- */
+.hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 2rem;
+  background:
+    linear-gradient(rgba(248, 250, 252, 0.55), rgba(248, 250, 252, 0.8)),
+    url("../images/hero-bg.svg") center / cover no-repeat;
+}
+
+.hero h1 {
+  font-size: clamp(2.5rem, 8vw, 6rem);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  line-height: 1.05;
+  color: var(--text);
+}
+
+.hero-sub {
+  display: inline-block;
+  margin-top: 1rem;
+  font-size: clamp(1.1rem, 2.4vw, 1.6rem);
+  font-weight: 500;
+  color: var(--primary);
+  text-decoration: none;
+  border-bottom: 2px solid var(--sky);
+  padding-bottom: 2px;
+  transition: color var(--ease);
+}
+.hero-sub:hover { color: var(--primary-dark); }
+
+.socials { margin-top: 2rem; display: flex; gap: 1.25rem; justify-content: center; }
+.socials a {
+  color: #475569;
+  display: flex;
+  padding: 10px;
+  border-radius: 50%;
+  transition: color var(--ease), background var(--ease), transform var(--ease);
+}
+.socials a:hover { color: var(--primary-dark); background: rgba(13, 110, 253, 0.08); transform: translateY(-2px); }
+
+/* ---------- Sections ---------- */
+.section { padding: clamp(3.5rem, 8vw, 6rem) var(--space); padding-left: max(var(--space), 90px); }
+.section.alt { background: #eef4fb; }
+
+.container { max-width: 1100px; margin: 0 auto; }
+.container.wide { max-width: 1400px; }
+
+.section-title {
+  position: relative;
+  font-size: clamp(1.7rem, 4vw, 2.5rem);
+  font-weight: 700;
+  padding-bottom: 0.75rem;
+  margin-bottom: 1.25rem;
+  border-bottom: 1px solid var(--border);
+}
+.section-title::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -2px;
+  width: 64px;
+  height: 4px;
+  border-radius: 4px;
+  background: linear-gradient(90deg, var(--primary), var(--sky));
+}
+
+.lead { color: var(--muted); font-size: 1.1rem; max-width: 900px; margin-bottom: 2.25rem; }
+
+/* ---------- Cards ---------- */
+.cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; }
+
+.card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.75rem;
+  box-shadow: var(--shadow);
+  transition: transform var(--ease), box-shadow var(--ease);
+}
+.card:hover { transform: translateY(-4px); box-shadow: 0 16px 36px rgba(13, 110, 253, 0.14); }
+.card-icon { font-size: 2rem; margin-bottom: 0.75rem; }
+.card h3 { font-size: 1.25rem; margin-bottom: 0.5rem; color: var(--primary-dark); }
+.card p { color: var(--muted); font-size: 0.98rem; }
+
+/* ---------- Viz containers ---------- */
+.viz-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 12px;
+  overflow: hidden;
+}
+.story-card { min-height: 800px; }
+tableau-viz { display: block; width: 100%; }
+
+.footer { text-align: center; padding: 2rem 1rem; color: var(--muted); font-size: 0.9rem; border-top: 1px solid var(--border); }
+
+/* ---------- Scroll to top ---------- */
+.to-top {
+  position: fixed;
+  right: 24px;
+  bottom: 24px;
+  width: 52px;
+  height: 52px;
+  border: none;
+  border-radius: 50%;
+  background: var(--primary);
+  color: #fff;
+  font-size: 1.5rem;
+  cursor: pointer;
+  box-shadow: 0 8px 20px rgba(13, 110, 253, 0.4);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(12px);
+  transition: opacity var(--ease), transform var(--ease), visibility var(--ease), background var(--ease);
+  z-index: 100;
+}
+.to-top.visible { opacity: 1; visibility: visible; transform: translateY(0); }
+.to-top:hover { background: var(--primary-dark); }
+
+/* ---------- Responsive ---------- */
+@media (max-width: 768px) {
+  .dock {
+    left: 50%;
+    top: auto;
+    bottom: 14px;
+    transform: translateX(-50%);
+    flex-direction: row;
+    padding: 8px 12px;
+    gap: 10px;
+  }
+  .dock-btn { width: 42px; height: 42px; }
+  .dock-btn .tip { display: none; }
+  .section { padding-left: var(--space); padding-bottom: 6rem; }
+  .to-top { bottom: 84px; right: 16px; width: 46px; height: 46px; }
+  .story-card { min-height: 600px; }
+}
+
+@media (min-width: 2200px) {
+  html { font-size: 20px; }
+  .container { max-width: 1500px; }
+  .container.wide { max-width: 2000px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  * { transition: none !important; }
+}

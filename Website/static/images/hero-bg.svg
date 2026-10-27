@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#e3eefa"/>
+      <stop offset="1" stop-color="#cfe3f5"/>
+    </linearGradient>
+    <filter id="paper" x="0" y="0" width="100%" height="100%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.012 0.02" numOctaves="4" seed="7" result="n"/>
+      <feDiffuseLighting in="n" lighting-color="#eaf3fc" surfaceScale="2.2">
+        <feDistantLight azimuth="225" elevation="55"/>
+      </feDiffuseLighting>
+    </filter>
+  </defs>
+  <rect width="1600" height="900" fill="url(#bg)"/>
+  <rect width="1600" height="900" filter="url(#paper)" opacity="0.55"/>
+  <g fill="none" stroke="#8fb6dc" stroke-opacity="0.45" stroke-width="1.4">
+    <path d="M120 300 C180 220 300 210 360 260 C420 310 400 380 340 420 C290 450 200 440 150 400 C110 370 100 330 120 300Z"/>
+    <path d="M150 310 C195 250 290 245 335 285 C380 325 365 370 320 395 C275 420 215 412 180 385 C150 360 140 335 150 310Z"/>
+    <path d="M520 220 C600 150 740 170 780 260 C820 350 760 450 690 520 C640 570 580 600 560 540 C540 480 580 440 560 380 C540 320 470 280 520 220Z"/>
+    <path d="M560 240 C620 190 720 200 750 265 C780 330 735 410 685 465 C650 505 610 520 598 490 C585 455 615 425 600 375 C585 325 520 290 560 240Z"/>
+    <path d="M900 200 C1000 140 1180 150 1280 220 C1380 290 1400 380 1330 430 C1260 480 1160 440 1090 470 C1020 500 960 440 920 380 C880 320 850 240 900 200Z"/>
+    <path d="M950 220 C1030 175 1160 185 1240 240 C1320 295 1335 360 1285 395 C1235 430 1160 400 1100 425 C1045 450 1000 405 970 360 C940 315 920 255 950 220Z"/>
+    <path d="M1180 560 C1260 530 1380 560 1400 630 C1420 700 1340 740 1260 730 C1180 720 1120 680 1130 620 C1135 590 1150 572 1180 560Z"/>
+    <path d="M820 600 C880 580 960 610 970 670 C980 730 920 780 860 770 C800 760 770 700 780 650 C785 625 800 608 820 600Z"/>
+  </g>
+  <g fill="none" stroke="#ffffff" stroke-opacity="0.5" stroke-width="1">
+    <path d="M0 150 C300 100 500 200 800 140 S1300 80 1600 150"/>
+    <path d="M0 760 C300 700 600 820 900 760 S1400 700 1600 780"/>
+    <path d="M0 450 C200 420 400 480 600 450 S1000 420 1200 460 S1500 440 1600 450"/>
+  </g>
+</svg>
