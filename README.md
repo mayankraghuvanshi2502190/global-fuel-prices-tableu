@@ -41,4 +41,4 @@ An interactive Tableau dashboard analyzing global fuel price fluctuations (Petro
 ## 🚀 How to Run Locally
 1. Clone this repository:
    ```bash
-   git clone [https://github.com/Mayank2502190-J2369/global-fuel-prices-tableau.git](https://github.com/Mayank2502190-J2369/global-fuel-prices-tableau.git)
+   git clone [https://github.com/Mayankraghuvanshi2502190-J2369/global-fuel-prices-tableau.git](https://github.com/Mayankraghuvanshi2502190-J2369/global-fuel-prices-tableau.git)
